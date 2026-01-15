@@ -315,28 +315,7 @@ WHEN NOT MATCHED THEN
 
 ---
 
-## 8. How to Run / Simulate the Pipeline
-
-1. Clone the repository
-2. Load sample input files from `/data`
-3. Execute SQL scripts in the following order:
-
-   1. `sql/01_raw_load.sql`
-   2. `sql/02_data_quality_and_cleaning.sql`
-   3. `sql/03_deduplication.sql`
-   4. `sql/04_dimensions.sql`
-   5. `sql/05_fact_orders.sql`
-   6. `sql/06_incremental_merge.sql`
-
-4. Review outputs under `/data/output`
-   - `fact_orders.csv`
-   - `rejected_orders.csv`
-
-No cloud account is required; the pipeline can be fully simulated locally using any SQL-compatible database.
-
----
-
-## 9. Assumptions & Limitations
+## 8. Assumptions & Limitations
 
 ### Assumptions
 - Source data contains reliable timestamps
@@ -350,7 +329,7 @@ No cloud account is required; the pipeline can be fully simulated locally using 
 
 ---
 
-## 10. How This Would Scale in Production
+## 9. How This Would Scale in Production
 
 If this pipeline were deployed in production:
 - ADF would orchestrate scheduled and event-based triggers
