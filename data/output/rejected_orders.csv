@@ -1,0 +1,3 @@
+order_id,reason
+3,Invalid order amount
+4,Missing customer_id

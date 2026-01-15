@@ -1,0 +1,38 @@
+{
+  "name": "orders_etl_pipeline",
+  "description": "Incremental ETL pipeline for transactional and event data",
+  "trigger": {
+    "type": "Schedule",
+    "frequency": "Daily"
+  },
+  "activities": [
+    {
+      "name": "Lookup_Last_Watermark",
+      "type": "Lookup",
+      "description": "Fetch last successful processed timestamp"
+    },
+    {
+      "name": "Copy_Orders_Incremental",
+      "type": "Copy",
+      "source": "RelationalSource",
+      "sink": "RawStorage",
+      "incrementalLogic": "updated_at > last_processed_timestamp"
+    },
+    {
+      "name": "Copy_Events_Raw",
+      "type": "Copy",
+      "source": "JSONSource",
+      "sink": "RawStorage"
+    },
+    {
+      "name": "Transform_Using_SQL",
+      "type": "Script",
+      "description": "Clean, deduplicate, and standardize data"
+    },
+    {
+      "name": "Load_Fact_and_Dim_Tables",
+      "type": "StoredProcedure",
+      "description": "Idempotent MERGE into analytics tables"
+    }
+  ]
+}

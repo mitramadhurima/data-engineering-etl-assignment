@@ -1,0 +1,16 @@
+[
+  {
+    "event_id": "evt_001",
+    "user_id": 101,
+    "event_type": "page_view",
+    "event_time": "2025-01-01T10:05:00Z",
+    "metadata": { "page": "/home" }
+  },
+  {
+    "event_id": "evt_002",
+    "user_id": 101,
+    "event_type": "checkout",
+    "event_time": "2025-01-01T10:10:00Z",
+    "metadata": { "page": "/checkout" }
+  }
+]
