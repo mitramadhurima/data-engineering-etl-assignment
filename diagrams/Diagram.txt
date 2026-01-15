@@ -1,0 +1,20 @@
+[Transactional Source → ADF Pipeline] New or updated transactional records are extracted from the relational source using incremental logic.
+        |  New or updated transactional records are extracted from the relational source using incremental logic.
+        v
+[Event / Log Source → ADF Pipeline]
+        | Raw event or log data (JSON) is ingested as-is for further processing.
+        v
+[ADF Pipeline → Raw / Bronze (NoSQL Store)]
+        | Ingested data is landed into a raw storage layer that preserves the original structure.
+        v
+[Raw / Bronze → Silver (SQL Transformations)]
+        | Raw data is cleaned, validated, standardized, and deduplicated using SQL.
+        v
+[Silver → Gold (Fact & Dimension Tables)]
+        | Cleaned data is transformed into analytics-ready fact and dimension tables.
+        v
+[Gold → BI / Reporting]
+        | Analytics users and BI tools query the Gold layer for insights and dashboards.
+        v
+[Gold Layer ↺ Incremental MERGE]
+        | The pipeline safely updates existing records and inserts new ones during re-runs.
